@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td, th{
+            border: 1px solid black;
+            padding: 14px;
+        }
+    </style>
+</head>
+<body>
+    
+      <!-- For image input -->
+   <div><input type="file" name="image" id="input1"> <input type="submit" value="upload" onclick="upload()"></div> 
+
+   <div id="img" style="width: 200px; height: 200px;">
+
+   </div>
+
+
+    <!-- for Table Generator -->
+   <div><input type="number" id="input2"><input type="submit" value="submit" onclick="tableGenerator()"></div>
+   <table>
+
+   </table>
+  <script>
+    function upload(){
+
+        let forImage = document.querySelector("#input1").files[0]
+        console.log(forImage)
+        let dummyUrl = URL.createObjectURL(forImage);
+        document.querySelector("#img").innerHTML = `<img src="${dummyUrl}" width="200px" height="200px" />`
+    }
+
+
+
+    function tableGenerator(){
+
+        let numberTable = Number(document.querySelector("#input2").value);
+
+        let tableRow = "";
+
+        for(let i=1; i <= 10; i++){
+            tableRow += `<tr>
+                <td>${numberTable}</td>
+                <td>x</td>
+                <td>${i}</td>
+                <td>=</td>
+                <td>${numberTable * i}</td>
+                </tr>`
+        }
+
+        document.querySelector("table").innerHTML = tableRow
+    }
+  </script>
+
+
+</body>
+</html>
